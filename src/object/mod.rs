@@ -216,6 +216,7 @@ pub enum ObjectType {
     LoadControl = 28,
     StructuredView = 29,
     AccessDoor = 30,
+    OctetString = 47,
     // ... many more standard types
     // Vendor specific range starts at 128
 }
@@ -256,6 +257,7 @@ impl TryFrom<u16> for ObjectType {
             28 => Ok(ObjectType::LoadControl),
             29 => Ok(ObjectType::StructuredView),
             30 => Ok(ObjectType::AccessDoor),
+            47 => Ok(ObjectType::OctetString),
             _ => Err(ObjectError::InvalidValue(format!(
                 "Unknown object type: {}",
                 value
@@ -735,6 +737,8 @@ pub mod engineering_units;
 pub mod file;
 /// Multi-state object types (MSI, MSO, MSV)
 pub mod multistate;
+/// Octet String object type
+pub mod octet_string;
 
 pub use analog::{AnalogInput, AnalogOutput, AnalogValue, EventState, Reliability};
 pub use binary::{BinaryInput, BinaryOutput, BinaryPV, BinaryValue, Polarity};
@@ -742,6 +746,7 @@ pub use device::{DeviceObject, ObjectFunctions};
 pub use engineering_units::EngineeringUnits;
 pub use file::{File, FileAccessMethod};
 pub use multistate::{MultiStateInput, MultiStateOutput, MultiStateValue};
+pub use octet_string::OctetString;
 
 #[cfg(feature = "std")]
 pub use database::{DatabaseBuilder, DatabaseStatistics, ObjectDatabase};

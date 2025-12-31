@@ -560,6 +560,7 @@ pub fn get_object_type_name(object_type: ObjectType) -> &'static str {
         ObjectType::LoadControl => "Load Control",
         ObjectType::StructuredView => "Structured View",
         ObjectType::AccessDoor => "Access Door",
+        ObjectType::OctetString => "Octet String",
     }
 }
 
